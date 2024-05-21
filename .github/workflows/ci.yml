@@ -21,7 +21,7 @@ jobs:
       run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       
     - name: Build Docker Image
-      run: docker build --file Dockerfile -t piro844/sourceshoot-router:latest .
+      run: docker build --file Dockerfile -t piro844/sourceshoot-router:latest ./nginx/
           
     - name: Docker Push to team_homepage
       run: docker push piro844/sourceshoot-router:latest
