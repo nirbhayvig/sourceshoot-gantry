@@ -3,7 +3,7 @@ version: '3'
 services:
 
   db:
-    image: mysql:8.0.17
+    image: arm64v8/mysql:8.0.37
     container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: sourceshoot
