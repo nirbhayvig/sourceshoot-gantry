@@ -27,7 +27,7 @@ jobs:
       name: Build and push
       uses: docker/build-push-action@v5
       with:
-        context: .
-        file: ./nginx/Dockerfile
+        context: /nginx
+        file: ./Dockerfile
         push: true
         tags: piro844/sourceshoot-router:latest
