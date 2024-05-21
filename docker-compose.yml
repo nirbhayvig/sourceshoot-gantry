@@ -13,23 +13,33 @@ services:
     volumes:
       - dbdata:/var/lib/mysql
 
-  sourceshoot_backend:
+  go-backend:
     build: ../sourceshoot-backend/backend
-    container_name: sourceshoot-backend
     ports:
       - "4200:4200"
     depends_on:
       - "db"
     restart: always
 
-  sourceshoot_frontend:
+  react-frontend:
     build: ../sourceshoot-frontend
-    container_name: sourceshoot-frontend
     ports:
       - "3000:3000"
     depends_on:
-      - sourceshoot_backend
+      - go-backend
     restart: always
+  
+  nginx:
+    build:
+      context: ./nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - "db"
+      - "go-backend"
+      - "react-frontend"
 
 volumes:
   dbdata:
